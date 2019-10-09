@@ -13,20 +13,24 @@ class TestMain(unittest.TestCase):
         t.root.left = 3
         self.assertFalse(bintree.is_empty(t))
 
-    def test_exists(self): #testing for a function which makes sure a node exists
-        #testing for trying to find a value in a binary which is totally is_empty
-        #(not sure if I should add this node - depends on robustness wanted)
-        b = bintree(None)
-        value = 1
-        exists(b, value)
-        #if
+    def test_tree_list(self): #testing for a function which creates a list from the
+        #elements of a binary tree. I will then use this to make sure the Node
+        #that of which the lca is being looked for exists
+        #test 1 - testing to see if it returns an empty list if the binary tree is is_empty
+        #test 2 - testing to see if it creates the correct list
+        b = bintree(1)
+        b.root.left = Node(0)
+        b.root.right = Node(5)
+        result = bintree.tree_list(b)
+        self.assertEqual(result, [1, 0, 4])
+        #test 3 - testing to make sure it works on uneven tree
     def test_lca(self):
         #testing for a tree which has takes the same two values (call them p and q)
         p = 1
         q = 1
         t = bintree(1)
-        t.node.left = 2
-        t.node.right = 3
+        t.root.left = 2
+        t.root.right = 3
         self.assertEqual(bintree.lca(t, p, q), 1)
         #more testing to add based on the robustness I'm looking for (will ask teacher)
 

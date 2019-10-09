@@ -19,6 +19,20 @@ class bintree(object):
     def is_empty(self):
         return (self.root.left == None and self.root.right == None)
 
-tree = bintree(1)
-tree.root.left = Node(1)
-tree.root.left = Node(1)
+    #def exists(self, x);
+    #    return x in tree_list
+
+    def tree_list(self):
+        l = [self.root.value]
+        if not bintree.is_empty(self):
+            return l + self.root.left.tree_list() + self.root.right.tree_list()
+        else:
+            return []
+    def lca(t, p, q):
+        return 1
+
+
+#example of how to build a general binary tree
+tree = bintree(2)
+tree.root.left = Node(2)
+tree.root.left = Node(3)
