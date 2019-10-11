@@ -40,11 +40,44 @@ class TestMain(unittest.TestCase):
         t.root.right.right= Node(4)
         result bintree.tree_list(t)
         self.assertEqual(result, [1, 2, 3, 4])
+
+    def test_tree_valid(self):#function which tests if a tree is valid (makes it robust)
+        #empty tree
+        b = bintree()
+        result = bintree.tree_valid(b)
+        self.assertTrue(result)
+        #tree which is valid
+        b = bintree(1)
+        b.root.left = Node(5)
+        b.root.right = Node(3)
+        result = bintree.tree_valid(b)
+        self.assertTrue(result)
+        #invalid tree (has a value appear more than once)
+        b.root.left.left = Node(5)
+        result = bintree.tree_valid(b)
+        self.assertFalse(result)
+        #invalid tree (there exists a node that is not of type node)
+        b.root.left.right = 3
+        result = bintree.tree_valid(b)
+        self.assertFalse(result)
+        return
+
     def test_lca(self):
         #testing for an empty tree
+        b_1 = binary(None)
+        p = 1
+        q = 2
+        result = bintree.lca(b_1, p, q)
+        self.assertRaises("")
         #testing for a tree which only has a root
+        b_1 = binary(1)
+        p = 1
+        q = 2
+        result = bintree.lca(b_1)
+        self.assertEqual()
         #testing for tree which is missing a value that is asked for
-        #testing for a tree which has takes the same two values (call them p and q)
+        b_1 =
+        #testing for a tree where p = q
         p = 1
         q = 1
         t = bintree(1)
