@@ -17,14 +17,33 @@ class TestMain(unittest.TestCase):
         #elements of a binary tree. I will then use this to make sure the Node
         #that of which the lca is being looked for exists
         #test 1 - testing to see if it returns an empty list if the binary tree is is_empty
+        b = bintree(None)
+        result = bintree.tree_list(b)
+        self.assertEqual(result, [])
         #test 2 - testing to see if it creates the correct list
         b = bintree(1)
         b.root.left = Node(0)
         b.root.right = Node(5)
         result = bintree.tree_list(b)
-        self.assertEqual(result, [1, 0, 4])
+        self.assertEqual(result, [1, 0, 5])
         #test 3 - testing to make sure it works on uneven tree
+        b.root.left.left = Node(1)
+        b.root.left.right = Node(3)
+        b.root.left.left.left = Node(9)
+        result = bintree.tree_list(b)
+        self.assertEqual(result, [1, 0, 1, 0, 3, 5])
+        #test 4 - testing when imbalanced on other side
+        #(based on how I think I want my function to work
+        t = binary(1)
+        t.root.right = Node(2)
+        t.root.right.left = Node(3)
+        t.root.right.right= Node(4)
+        result bintree.tree_list(t)
+        self.assertEqual(result, [1, 2, 3, 4])
     def test_lca(self):
+        #testing for an empty tree
+        #testing for a tree which only has a root
+        #testing for tree which is missing a value that is asked for
         #testing for a tree which has takes the same two values (call them p and q)
         p = 1
         q = 1
@@ -32,7 +51,7 @@ class TestMain(unittest.TestCase):
         t.root.left = 2
         t.root.right = 3
         self.assertEqual(bintree.lca(t, p, q), 1)
-        #more testing to add based on the robustness I'm looking for (will ask teacher)
+        #testing for a tree in which p is a parent of q
 
 #if "__name__" == "__main__":
 #    unittest.main()

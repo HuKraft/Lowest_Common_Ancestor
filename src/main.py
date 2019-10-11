@@ -25,7 +25,7 @@ class bintree(object):
     def tree_list(self):
         l = [self.root.value]
         if not bintree.is_empty(self):
-            return l + self.root.left.tree_list() + self.root.right.tree_list()
+            return l + (self.root.left).tree_list() + (self.root.right).tree_list()
         else:
             return []
     def lca(t, p, q):
