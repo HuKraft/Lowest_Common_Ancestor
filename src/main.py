@@ -22,24 +22,14 @@ class bintree(object):
         else:
             return (self.left == None and self.right == None)
 
-    #def exists(self, x);
-    #    return x in tree_list
-
-    def tree_list(self):
-        if isinstance(self, bintree):
-            l = [self.root.value]
-        else:
-            l = [self.value]
-        if not bintree.is_empty(self):
-            return l + bintree.tree_list(self.root.left) + bintree.tree_list(self.root.right)
-        else:
-            return []
-
     def tree_valid(self):
+        
         return 1
 
 
     def lca(t, p, q):
+        if not tree_valid:
+            return False
         return 1
 
 

@@ -13,34 +13,6 @@ class TestMain(unittest.TestCase):
         t.root.left = 3
         self.assertFalse(bintree.is_empty(t))
 
-    def test_tree_list(self): #testing for a function which creates a list from the
-        #elements of a binary tree. I will then use this to make sure the Node
-        #that of which the lca is being looked for exists
-        #test 1 - testing to see if it returns an empty list if the binary tree is is_empty
-        b = bintree(None)
-        result = bintree.tree_list(b)
-        self.assertEqual(result, [])
-        #test 2 - testing to see if it creates the correct list
-        b = bintree(1)
-        b.root.left = Node(0)
-        b.root.right = Node(5)
-        result = bintree.tree_list(b)
-        self.assertEqual(result, [1, 0, 5])
-        #test 3 - testing to make sure it works on uneven tree
-        b.root.left.left = Node(1)
-        b.root.left.right = Node(3)
-        b.root.left.left.left = Node(9)
-        result = bintree.tree_list(b)
-        self.assertEqual(result, [1, 0, 1, 0, 3, 5])
-        #test 4 - testing when imbalanced on other side
-        #(based on how I think I want my function to work
-        t = binary(1)
-        t.root.right = Node(2)
-        t.root.right.left = Node(3)
-        t.root.right.right= Node(4)
-        result = bintree.tree_list(t)
-        self.assertEqual(result, [1, 2, 3, 4])
-
     def test_tree_valid(self):#function which tests if a tree is valid (makes it robust)
         #empty tree
         b = bintree(None)
