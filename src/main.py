@@ -6,34 +6,50 @@
 
 #add blah blah
 
+
 class Node(object):
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
-class bintree(object):
-    def __init__(self, root):
-        self.root = Node(root)
-
     def is_empty(self):
-        if isinstance(self, bintree):
-            return (self.root.left == None and self.root.right == None)
-        else:
-            return (self.left == None and self.right == None)
+        return (self.value == None)
+    def is_empty_root(self):
+        return (self.left == None) and (self.right == None)
 
-    def tree_valid(self):
-        
-        return 1
+    def tree_valid_list(self):
+        if self == None:
+            return []
+        return [self.value] + self.left.tree_valid_list() + self.right.tree_valid_list()
 
-
-    def lca(t, p, q):
-        if not tree_valid:
+    def tree_valid(self, p, q):
+        if ((not p in tree_valid_list) or (not q in tree_valid_list)):
             return False
-        return 1
+        return True
 
+    def lca(self, p, q):
+        if self is None:
+            return None
+        left_lca = None
+        right_lca = None
+        if self.value == p or self.value == q:
+            return self.value
+        if self.left:
+            left_lca = self.left.lca(p, q)
+        if self.right:
+            right_lca = self.right.lca( p, q)
+        if left_lca and right_lca:
+            return self.value
+        return left_lca if left_lca else right_lca
 
-#example of how to build a general binary tree
-tree = bintree(2)
-tree.root.left = Node(2)
-tree.root.left = Node(3)
+    def lca_t(self,p,q):
+        if not self.tree_valid(p,q):
+            return None
+        return self.lca(p,q)
+        return 1;
+
+t = Node(2)
+t.left = Node(3)
+t.right = Node(4)
+print(t.lca(5,6))
