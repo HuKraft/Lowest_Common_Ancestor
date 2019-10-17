@@ -1,11 +1,3 @@
-#add data structure
-
-#add is_empty
-
-#add search
-
-#add blah blah
-
 
 class Node(object):
     def __init__(self, value):
