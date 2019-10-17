@@ -22,8 +22,17 @@ class Node(object):
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def has_key(self,  key):
+    if key in self.keys():
+        return 1
+    return 0;
 
-def path(graph, start, end, path=[]):
+def dag_path(graph, start, end, path=[]):
+    return 1
+
+def lca_dag(d, p, q):
+
+    return 1
 
 
 d = {1: [2, 3],
@@ -31,4 +40,4 @@ d = {1: [2, 3],
      3: [4],
      4: [5],
      5: []}
-print(path(d, 1, 5, []))
+#print(dag_path(d, 1, 5, []))
