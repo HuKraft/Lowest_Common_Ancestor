@@ -7,7 +7,6 @@ from main import Node
 #           the LCA by finding the node which is the closest parent
 #           of both
 
-
 class TestMain(unittest.TestCase):
 #new tests - will delete old ones later - may still use them as templates
 #some tests will differ as they would not make sense to create in the
@@ -19,9 +18,8 @@ class TestMain(unittest.TestCase):
         d = {1: [2, 3],
              2: [3, 4],
              3: [4],
-             4: [3],
-             5: [6],
-             6: [3]}
+             4: [5],
+             5: []}
         root = 1
         value = 4
         result = path(d, root, value, [])
@@ -43,36 +41,66 @@ class TestMain(unittest.TestCase):
         d = {1: [2, 3],
              2: [3, 4],
              3: [4],
-             4: [3],
-             5: [6],
-             6: [3],
-             7: []}
+             4: [5],
+             5: []}
         result = path(d, root, value, [])
-        self.assertEqual(result, None)     
+        self.assertEqual(result, None)
 
     def test_lca_dga(self):
         #test 1 - empty dga
         dga = {}
         p = 1
-        q = 1
+        q = 2
         result = lca_dga(dga, p, q, [])
         self.assertEqual(result, None)
         #test 2 - a graph which has one root that aims nowhere
         d = {1: None}
         p = 1
-        q = 1
+        q = 2
         result = lca_dga(d, p , q, [])
         self.assertEqual(result, None)
         #test 3 -  graph which is missing a value that is asked for
-        d = {1: [2,3],
-             2: [3,4,5],
-             3: [],
+        d = {1: [2, 3],
+             2: [4],
+             3: [5,6],
              4: [],
-             5: [4]}
+             5: [],
+             6: [5]}
         p = 7
-        q = 1
+        q = 3
         result = lca_dga(d, p, q, [])
         self.assertEqual(result, None)
+        #test 4 - finding the LCA of p and q which each only have one path
+        p = 6
+        p = 2
+        result = lca_dga(d, p, q, [])
+        self.assertEqual(result, 1)
+        #test 5 - finding the LCA of p and q, each of which have multiple paths
+        #(but whose paths don't intersect)
+        d = {1: [2,3],
+             2: [4,5],
+             3: [8,7],
+             4: [6],
+             5: [4],
+             6: [],
+             7: [8],
+             8: [9],
+             9: []}
+             p = 4
+             p = 8
+             result = lca_dga(d, p, q, [])
+             self.assertEqual(result, 1)
+        #test 6 - finding the LCA where p is inside the path of q
+        d = {1: [2, 3],
+             2: [3, 4],
+             3: [4, 5],
+             4: [5],
+             5: [6],
+             6: []}
+        p = 5
+        q = 6
+        result = lca_dga(d, p, q, [])
+        self.assertEqual(result, 6) 
 
 #--------------------------------------------
     def test_lca(self):
