@@ -20,8 +20,15 @@ class Node(object):
             return self.value
         return left_lca if left_lca else right_lca
 
-b_1 = Node(1)
-p = 1
-q = 2
-result = Node.lca(b_1, p, q)
-print(result)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+def path(graph, start, end, path=[]):
+
+
+d = {1: [2, 3],
+     2: [3, 4],
+     3: [4],
+     4: [5],
+     5: []}
+print(path(d, 1, 5, []))

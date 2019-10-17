@@ -12,6 +12,20 @@ class TestMain(unittest.TestCase):
 #some tests will differ as they would not make sense to create in the
 #context of these new functions and the DGA type
 
+    def test_has_key(self):#function which verifies that a given key is present
+        #test 1 - key exists in dictionary
+        d = {1: [2, 3]
+             2: [3,4]
+             3: []
+             4: [3]}
+        key = 3
+        result = has_key(d, key)
+        self.assertTrue(result)
+        #test 2 - key does not exist in dictionary
+        key = 5
+        result = has_key(d, key)
+        self.assertFalse(result)
+        
     def test_path(self):
 
         #test 1 - finding a path which exists
@@ -100,7 +114,7 @@ class TestMain(unittest.TestCase):
         p = 5
         q = 6
         result = lca_dga(d, p, q, [])
-        self.assertEqual(result, 6) 
+        self.assertEqual(result, 6)
 
 #--------------------------------------------
     def test_lca(self):
