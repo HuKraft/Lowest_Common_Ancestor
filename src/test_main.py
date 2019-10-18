@@ -82,12 +82,12 @@ class TestMain(unittest.TestCase):
              6: [5]}
         p = 7
         q = 3
-        result = lca_dag(d, p, q, [])
+        result = lca_dag(d, p, q)
         self.assertEqual(result, None)
         #test 4 - finding the LCA of p and q which each only have one path
         p = 6
         q = 2
-        result = lca_dag(d, p, q, [])
+        result = lca_dag(d, p, q)
         self.assertEqual(result, 1)
         #test 5 - finding the LCA of p and q, each of which have multiple paths
         #(but whose paths don't intersect)
@@ -114,8 +114,22 @@ class TestMain(unittest.TestCase):
         p = 5
         q = 6
         result = lca_dag(d, p , q)
-        self.assertEqual(result, 6)
-
+        self.assertEqual(result, 5)
+        #final test - showing that this solution works for a general binary tree
+        #to prove that the DAG solution works for bintrees (as it should, since
+        #binary trees are a subset of DAGs)
+        b = {1: [2,3],
+             2: [4,5],
+             3: [6,7],
+             4: [],
+             5: [8],
+             6: [],
+             7: [],
+             8: []}
+        p = 4
+        q = 8
+        result = lca_dag(b,p,q)
+        self.assertEqual(result, 2)
 #--------------------------------------------
 """
     def test_lca(self):
